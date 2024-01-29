@@ -1,20 +1,39 @@
 // Clase
 
 class ToDo {
+  Texto
+  Prioridade
+  Feito = false
 
+  constructor(texto, prioridade){
+    this.Texto = texto;
+    this.Prioridade = prioridade;
+  }
 }
 
 // Array
-
+let arrayTodos = []
 
 //funções projeto
 
-function CriarToDo() {
+function CriarToDo(texto, prioridade, array) {
+  let objetoTodo = new ToDo(texto, prioridade)
 
+  if(!array.some(tarefa => tarefa.Texto == texto)){
+    arrayTodos.push(objetoTodo)
+    return objetoTodo
+  }
 }
 
-function AtualizarToDo() {
-
+function AtualizarToDo(textoAntigo, textoNovo, array) {
+  let retorno = false;
+  array.forEach(tarefa => {
+    if(tarefa.Texto == textoAntigo){
+      tarefa.Texto = textoNovo;
+      retorno = true;
+    }
+  })
+  return retorno;
 }
 
 function ConcluirToDo() {
